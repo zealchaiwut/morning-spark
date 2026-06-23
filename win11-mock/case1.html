@@ -167,8 +167,9 @@
   .search-box {
     display:flex; align-items:center; gap:clamp(8px, 1.6vw, 16px);
     border:1px solid #8d8d8d; border-radius:12px;
-    padding:9.5px 11.5px;
+    padding:9.5px 11.5px; cursor:pointer;
   }
+  .read-filter .pill-all, .read-filter .pill { cursor:pointer; }
   .search-box img { width:clamp(20px, 2.6vw, 32px); height:clamp(20px, 2.6vw, 32px); flex:none; }
   .search-box .ph { font-size:clamp(13px, 1.9vw, 20px); color:var(--gray-70); line-height:1.25; }
   .filters { display:flex; gap:clamp(12px, 2vw, 20px); align-items:flex-start; flex-wrap:wrap; }
@@ -950,6 +951,9 @@
     document.getElementById('slidePrev').addEventListener('click', () => showSlide(slideIdx - 1));
     document.getElementById('slideNext').addEventListener('click', () => showSlide(slideIdx + 1));
     thumbs.forEach((th, k) => th.addEventListener('click', () => showSlide(k)));
+
+    // search box + filters (expand modal) -> question card
+    document.querySelectorAll('#modal .search-box, #modal .dropdown, #modal .read-filter .pill-all, #modal .read-filter .pill').forEach(el => el.addEventListener('click', () => showAsk(el)));
 
     // sub-tabs -> scroll detail body to each table group (ทั้งหมด -> top)
     const detailBody = document.querySelector('#detail .detail-body');
