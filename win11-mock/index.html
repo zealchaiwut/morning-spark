@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CYNX — Desktop</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; }
+  body {
+    font-family: "Segoe UI", "Open Sans", Roboto, system-ui, sans-serif;
+    color: #fff;
+  }
+
+  /* ---- Desktop ---- */
+  .desktop {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: url("assets/wallpaper.png") center / cover no-repeat;
+  }
+
+  /* ---- Taskbar ---- */
+  .taskbar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(68, 68, 68, 0.30);
+    backdrop-filter: blur(35px);
+    -webkit-backdrop-filter: blur(35px);
+    display: flex;
+    align-items: center;
+  }
+
+  /* weather widget (left) */
+  .weather {
+    position: absolute;
+    left: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 50px;
+  }
+  .weather img { width: 24px; height: 17px; }
+  .weather .info { display: flex; flex-direction: column; line-height: 1.1; }
+  .weather .temp { font-size: 12.5px; font-weight: 600; }
+  .weather .desc { font-size: 13.6px; font-weight: 400; }
+
+  /* centered app icons */
+  .apps {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 26px;
+  }
+  .apps .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform .12s ease;
+  }
+  .apps .icon:hover { transform: translateY(-2px); }
+  .apps .icon img { display: block; height: 27px; width: auto; }
+  .apps .icon.win img { height: 24px; }
+
+  /* desktop manager glyph (two stacked rects) */
+  .deskman { position: relative; width: 30px; height: 28px; }
+  .deskman .r1, .deskman .r2 { position: absolute; border-radius: 2px; }
+  .deskman .r1 { width: 23px; height: 20px; left: 0; top: 8px;
+    background: linear-gradient(#5e5e5e, #404040); }
+  .deskman .r2 { width: 23px; height: 21px; left: 7px; top: 0;
+    background: rgba(255,255,255,0.6); }
+
+  /* system tray (right) */
+  .tray {
+    position: absolute;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .tray .glyphs { display: flex; gap: 6px; font-size: 16px; }
+  .tray .clock { text-align: right; font-size: 12px; line-height: 1.35; }
+</style>
+</head>
+<body>
+  <div class="desktop">
+    <div class="taskbar">
+
+      <!-- weather -->
+      <div class="weather">
+        <img src="assets/weather.svg" alt="weather" />
+        <div class="info">
+          <span class="temp">8°C</span>
+          <span class="desc">Partly sunny</span>
+        </div>
+      </div>
+
+      <!-- centered apps -->
+      <div class="apps">
+        <div class="icon win"><img src="assets/windows.svg" alt="Start" /></div>
+        <div class="icon"><img src="assets/search.svg" alt="Search" /></div>
+        <div class="icon"><div class="deskman"><div class="r1"></div><div class="r2"></div></div></div>
+        <div class="icon"><img src="assets/chat.svg" alt="Chat" /></div>
+        <div class="icon"><img src="assets/explorer.svg" alt="File Explorer" /></div>
+        <div class="icon"><img src="assets/edge.svg" alt="Edge" /></div>
+      </div>
+
+      <!-- system tray -->
+      <div class="tray">
+        <div class="glyphs">
+          <span title="Wi-Fi">&#9683;</span>
+          <span title="Speaker">&#128266;</span>
+          <span title="Battery">&#128267;</span>
+        </div>
+        <div class="clock">
+          <div>11:00 AM</div>
+          <div>10/05/2021</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
