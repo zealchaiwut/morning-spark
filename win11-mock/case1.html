@@ -84,8 +84,8 @@
   .stat {
     flex:1 1 0; min-width:0;
     background:var(--gray-10); border:1px solid var(--gray-40);
-    border-radius:12px; padding:10px;
-    display:flex; flex-direction:column; gap:4px; align-items:center; text-align:center;
+    border-radius:12px; padding:6px 10px;
+    display:flex; flex-direction:column; gap:2px; align-items:center; text-align:center;
   }
   .stat .num { font-size:24.78px; font-weight:700; line-height:1.25; }
   .stat .lbl { font-size:16px; font-weight:400; color:#000; line-height:1.25; }
@@ -381,10 +381,11 @@
   /* pinned footer */
   .detail-footer {
     flex:none; position:relative; z-index:2;
+    width:100%;
     background:#fff; border-radius:0 0 16px 16px;
     box-shadow:0 -2px 4.2px rgba(0,0,0,.25);
     display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
-    padding:clamp(14px,2.2vw,32px) clamp(16px,3.5vw,48px) clamp(20px,3.2vw,48px);
+    padding:clamp(10px,1.5vw,22px) clamp(16px,3.5vw,48px) clamp(14px,2.2vw,34px);
   }
   .detail-footer .fbtn {
     display:inline-flex; align-items:center; justify-content:center; gap:8px;
@@ -685,14 +686,14 @@
             <div class="sec">
               <div class="sec-head"><span class="ic">🔧</span><span class="h">ข้อปฎิบัติที่เปลี่ยนไป</span></div>
               <div class="sub-tabs">
-                <div class="sub-tab active">ทั้งหมด</div>
-                <div class="sub-tab">หน่วยงานที่รับลูกค้า</div>
-                <div class="sub-tab">สาขาเจ้าของบัญชี</div>
-                <div class="sub-tab">ทีมสนับสนุนงานสาขา (Back Office)</div>
+                <div class="sub-tab active" data-scroll="top">ทั้งหมด</div>
+                <div class="sub-tab" data-scroll="ct1">หน่วยงานที่รับลูกค้า</div>
+                <div class="sub-tab" data-scroll="ct2">สาขาเจ้าของบัญชี</div>
+                <div class="sub-tab" data-scroll="ct3">ทีมสนับสนุนงานสาขา (Back Office)</div>
               </div>
 
               <!-- group 1 -->
-              <div class="ctable">
+              <div class="ctable" id="ct1">
                 <div class="grp-head">หน่วยงานที่รับลูกค้า (หน้าเคาน์เตอร์/บริการ)</div>
                 <div class="crow">
                   <div class="c-desc"><b>ตรวจสอบสถานะ: </b>พิสูจน์ทราบตัวตนลูกค้าว่าเป็นบุคคลอเมริกันหรือไม่ (ตามเกณฑ์ FATCA/CRS)</div>
@@ -717,7 +718,7 @@
               </div>
 
               <!-- group 2 -->
-              <div class="ctable">
+              <div class="ctable" id="ct2">
                 <div class="grp-head">สาขาเจ้าของบัญชี</div>
                 <div class="crow">
                   <div class="c-desc"><b>ทบทวนข้อมูล: </b>ตรวจสอบและอัปเดตรายงาน KYC/CDDในระบบเพื่อทบทวนข้อมูลหลักฐานแสดงตนของลูกค้า อย่างต่อเนื่อง</div>
@@ -744,7 +745,7 @@
               </div>
 
               <!-- group 3 -->
-              <div class="ctable">
+              <div class="ctable" id="ct3">
                 <div class="grp-head">ทีมสนับสนุนงานสาขา (Back Office)</div>
                 <div class="crow">
                   <div class="c-desc"><b>แจ้งผลและส่งเอกสาร: </b>เมื่อเปิดบัญชีแล้ว ต้องทำทะเบียนแจ้งผล (สำเร็จ/ไม่สำเร็จ) กลับไปยังสาขา พร้อมจัดพิมพ์และส่งคืนใบคำขอเปิดบัญชีให้สาขา</div>
@@ -834,6 +835,15 @@
           </div>
         </div>
 
+        <!-- question card (share / quiz) -->
+        <div class="ask-dim">
+          <div class="ask-card">
+            <button class="ask-close" aria-label="ปิด"><img src="assets/close.svg" alt="close" /></button>
+            <div class="ask-icon">?</div>
+            <div class="ask-text"><span class="blue">ทีมงานอยากทราบ</span><br />คุณคาดหวังอะไร<br />จากการกดปุ่มนี้?</div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -895,7 +905,7 @@
     const openDetail  = () => { popup.classList.remove('open'); modal.classList.remove('open'); detail.classList.add('open'); overlay.classList.add('open'); };
     const closeDetail = () => { detail.classList.remove('open'); overlay.classList.remove('open'); resetRead(); };
     // no-detail link -> show question card INSIDE its container (popup/modal), keep it open
-    const showAsk = (el) => { const c = el.closest('.popup, .modal-card'); if (!c) return; c.scrollTop = 0; c.querySelector('.ask-dim').classList.add('open'); };
+    const showAsk = (el) => { const c = el.closest('.popup, .modal-card, .detail-card'); if (!c) return; c.scrollTop = 0; c.querySelector('.ask-dim').classList.add('open'); };
     const hideAllAsk = () => document.querySelectorAll('.ask-dim.open').forEach(d => d.classList.remove('open'));
     // back -> return to expand modal
     const backToModal = () => { detail.classList.remove('open'); modal.classList.add('open'); overlay.classList.add('open'); };
@@ -940,6 +950,20 @@
     document.getElementById('slidePrev').addEventListener('click', () => showSlide(slideIdx - 1));
     document.getElementById('slideNext').addEventListener('click', () => showSlide(slideIdx + 1));
     thumbs.forEach((th, k) => th.addEventListener('click', () => showSlide(k)));
+
+    // sub-tabs -> scroll detail body to each table group (ทั้งหมด -> top)
+    const detailBody = document.querySelector('#detail .detail-body');
+    document.querySelectorAll('#detail .sub-tab').forEach(t => t.addEventListener('click', () => {
+      document.querySelectorAll('#detail .sub-tab').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      const tgt = t.dataset.scroll;
+      if (tgt === 'top') { detailBody.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+      const el = document.getElementById(tgt);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }));
+
+    // share button + quiz options -> same question card inside detail
+    document.querySelectorAll('#detail .fbtn.share, #detail .opt').forEach(el => el.addEventListener('click', () => showAsk(el)));
 
     // mark-as-read (mock) -> close detail, open expand list with first item read
     const markReadBtn = document.querySelector('#detail .fbtn.read');
