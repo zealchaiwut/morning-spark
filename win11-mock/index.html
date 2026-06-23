@@ -359,8 +359,10 @@
     line-height:1.35; color:#000; }
   .crow .c-desc { flex:1 1 0; min-width:0; }
   .crow .c-desc b { font-weight:700; }
-  .crow .c-link { flex:none; width:clamp(78px, 12vw, 134px); }
-  .crow .c-link a { color:#0072c3; font-weight:700; text-decoration:underline; }
+  .crow .c-link { flex:none; width:clamp(104px, 14vw, 160px); }
+  .crow .c-link a { color:#0072c3; font-weight:700; text-decoration:underline; white-space:nowrap; }
+  .crow .c-link li { white-space:nowrap; }
+  .crow .c-link ul { list-style:none; margin:0; padding:0; }
   .crow .c-ref  { flex:1 1 0; min-width:0; }
   .crow .c-desc ul, .crow .c-ref ul { margin:0; padding-left:20px; }
 
@@ -386,7 +388,7 @@
     background:#fff; border-radius:0 0 16px 16px;
     box-shadow:0 -2px 4.2px rgba(0,0,0,.25);
     display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
-    padding:clamp(10px,1.5vw,22px) clamp(16px,3.5vw,48px) clamp(14px,2.2vw,34px);
+    padding:clamp(5px,0.8vw,11px) clamp(16px,3.5vw,48px) clamp(7px,1.1vw,17px);
   }
   .detail-footer .fbtn {
     display:inline-flex; align-items:center; justify-content:center; gap:8px;
@@ -848,6 +850,571 @@
       </div>
     </div>
 
+    <!-- detail modal 2 (FATCA article) -->
+    <div class="detail" id="detail2" role="dialog" aria-label="รายละเอียดข่าว 2">
+      <div class="detail-card">
+
+        <div class="detail-body" id="detailBody2">
+          <div class="detail-head">
+            <div class="title">Morning Spark!</div>
+            <button class="modal-close" id="detailClose2" aria-label="ปิด"><img src="assets/close.svg" alt="close" /></button>
+          </div>
+
+          <!-- article preview -->
+          <div class="article-card">
+            <div class="feed-inner" style="border-bottom:none; padding-bottom:0;">
+              <div class="fi-top">
+                <div class="tags"><span class="tag red">บังคับใช้ 26/06/2568</span><span class="tag teal">ต้องพิมพ์ฟอร์มใหม่</span></div>
+                <div class="fi-date">วันที่โพสต์: 11 มิ.ย. 2568</div>
+              </div>
+              <div class="fi-title">คู่มือการเปิดบัญชีทางการเงินใหม่ตามกฎ FATCA ประจำปี 2569</div>
+              <div class="fi-bottom">
+                <div class="cats"><span class="cat">วิธีปฏิบัติ</span><span class="cat">ธุรกรรม</span><span class="cat">FATCA</span></div>
+                <div class="read-status"><span class="dot unread"></span>ยังไม่อ่าน</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-changes">
+
+            <div class="tabs">
+              <div class="tab active" data-tab="summary"><span class="ic">📡</span>ข้อมูลสรุป</div>
+              <div class="tab" data-tab="images"><span class="ic">🖼️</span>ข้อมูลรูปภาพ</div>
+              <div class="tab" data-tab="files"><span class="ic">🗄️</span>ไฟล์เอกสารทั้งหมด</div>
+            </div>
+
+            <!-- panel: summary -->
+            <div class="tab-panel" data-panel="summary">
+
+            <!-- สรุปข่าว -->
+            <div class="sec">
+              <div class="sec-head"><span class="ic">📣</span><span class="h">สรุปข่าว</span></div>
+              <div class="change-row">
+                <ol>
+                  <li>ระเบียบ: หมวด Internal Audit/ Compliance &amp; Legal เรื่อง การปฏิบัติตามกฏหมาย FATCA</li>
+                  <li>ยกเลิกระเบียบเดิม: NRR.202/2567 เปลี่ยนเป็น <a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQDJ1pdwyPwLRK76ID4ijlK4Af8si5HZhrvPjLy7_hgmOBA?e=KKiStE" target="_blank" rel="noopener">NRR.177 / 2568</a></li>
+                </ol>
+              </div>
+            </div>
+
+            <!-- ข้อปฎิบัติที่เปลี่ยนไป -->
+            <div class="sec">
+              <div class="sec-head"><span class="ic">🔧</span><span class="h">ข้อปฎิบัติที่เปลี่ยนไป</span></div>
+              <div class="sub-tabs">
+                <div class="sub-tab active" data-scroll="top">ทั้งหมด</div>
+                <div class="sub-tab" data-scroll="ct4">หน่วยงานที่รับลูกค้า</div>
+                <div class="sub-tab" data-scroll="ct5">อัปเดตฟอร์ม</div>
+              </div>
+
+              <!-- group 1 -->
+              <div class="ctable" id="ct4">
+                <div class="grp-head">หน่วยงานที่รับลูกค้า (หน้าเคาน์เตอร์/บริการ)</div>
+                <div class="crow">
+                  <div class="c-desc"><b>อัปเดตข้อมูล: </b>ผลิตภัณฑ์และบริการของธนาคารที่เข้าข่ายบัญชีทางการเงิน FATCA</div>
+                  <div class="c-link"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQDJ1pdwyPwLRK76ID4ijlK4Af8si5HZhrvPjLy7_hgmOBA?e=KKiStE" target="_blank" rel="noopener">ระเบียบ</a></div>
+                  <div class="c-ref">(หน้า 12-13) 1.3.6 การพิจารณาผลิตภัณฑ์และบริการของธนาคารฯ ที่เข้าข่ายต้องมีการปฏิบัติตามกฎหมาย FATCA</div>
+                </div>
+                <div class="crow">
+                  <div class="c-desc"><b>ตรวจสอบตัวตน: </b>ค้นหาข้อบ่งชี้ความเป็นบุคคลอเมริกัน (U.S. Indicia) สำหรับบัญชีบุคคลธรรมดา ที่มีมูลค่าสูง</div>
+                  <div class="c-link"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQDJ1pdwyPwLRK76ID4ijlK4Af8si5HZhrvPjLy7_hgmOBA?e=KKiStE" target="_blank" rel="noopener">ระเบียบ</a></div>
+                  <div class="c-ref">(หน้า 16-17)2.1.2 บัญชีบุคคลธรรมดาที่มีมูลค่าสูง (High Value Individual Account)</div>
+                </div>
+                <div class="crow">
+                  <div class="c-desc"><b>ตรวจสอบนิติบุคคล: </b>ดึงข้อมูลจากฐานข้อมูลอิเล็กทรอนิกส์และเอกสาร เพื่อตรวจสอบสถานะของบัญชีนิติบุคคลที่เปิดอยู่แล้ว (Pre-existing Entity Account)</div>
+                  <div class="c-link"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQDJ1pdwyPwLRK76ID4ijlK4Af8si5HZhrvPjLy7_hgmOBA?e=KKiStE" target="_blank" rel="noopener">ระเบียบ</a></div>
+                  <div class="c-ref">(หน้า 19-21) 2.2.2 การตรวจสอบ บัญชีนิติบุคคลที่เปิดอยู่แล้ว (Pre-Existing Entity Account)</div>
+                </div>
+                <div class="crow">
+                  <div class="c-desc"><b>อัปเดตข้อมูล: </b>สายงานใน Cluster Product &amp; Business Solutions</div>
+                  <div class="c-link"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQDccxlfFIwFTKeI4rBjnjZkAayyFssTPEpxZlpe5_eJKYc?e=vI3K1z" target="_blank" rel="noopener">นโยบาย</a></div>
+                  <div class="c-ref">(หน้า 10) 3.5 หน่วยงานหลักที่เกี่ยวข้อง (Cluster Product &amp; Business Solutions)</div>
+                </div>
+              </div>
+
+              <!-- group 2 -->
+              <div class="ctable" id="ct5">
+                <div class="grp-head">อัปเดตฟอร์ม</div>
+                <div class="crow">
+                  <div class="c-desc">
+                    <ul>
+                      <li>แบบฟอร์ม W-9 สําหรับลูกค้าที่ยืนยันตนเองว่าเป็นบุคคลอเมริกัน (U.S. Person)</li>
+                      <li>แบบฟอร์ม W-8BEN สําหรับลูกค้าที่ยืนยันตนเองว่าไม่ใช่บุคคลอเมริกัน (non-U.S. Person)</li>
+                      <li>แบบฟอร์ม FATCA &amp; CRS 02 สำหรับลูกค้านิติบุคคล</li>
+                      <li>แบบฟอร์ม FATCA &amp; CRS Self-Certification Form สำหรับลูกค้าไม่ใช่บุคคลอเมริกัน</li>
+                    </ul>
+                  </div>
+                  <div class="c-ref">
+                    <ul>
+                      <li><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQBvh4osxd-GRLo5R8tJTXcZAX7NKH7Rsykq-qKWBsn3BAE?e=UkcVgL" target="_blank" rel="noopener">ดาวน์โหลดฟอร์ม W-9</a></li>
+                      <li><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQAcHEpaEyKZTaslASJ9lZF1AboEoZeAjXMmwyzpQl6ywSw?e=lX4gi5" target="_blank" rel="noopener">ดาวน์โหลดฟอร์ม W-8BEN</a></li>
+                      <li><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQCTi9f-oei_Q6tzsMNnKiLVAda8z7jguJz5TMXdfEXJZE4?e=DYDqPJ" target="_blank" rel="noopener">ดาวน์โหลดฟอร์ม FATCA &amp; CRS 02</a></li>
+                      <li><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQBuYDbyx-QAR4uakBCqho5eAfW4gfwUURjAJ9EhuZY-VCs?e=y4kKLU" target="_blank" rel="noopener">ดาวน์โหลดฟอร์ม FATCA &amp; CRS Self-Certification Form</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- สอบถามข้อมูลเพิ่มเติม -->
+            <div class="sec">
+              <div class="sec-head"><span class="ic">📞</span><span class="h">สอบถามข้อมูลเพิ่มเติม</span></div>
+              <div class="qa">
+                <b>งานกฎเกณฑ์สากล ฝ่าย Overseas Branches Compliance Supervision and EEC Project Regulations</b><br />
+                โทร. <span class="phone">02-208-3879</span>
+              </div>
+            </div>
+
+            <!-- มาลองทบทวนไปด้วยกันนะ -->
+            <div class="sec">
+              <div class="sec-head"><span class="ic">📖</span><span class="h">มาลองทบทวนไปด้วยกันนะ</span></div>
+              <div class="quiz">
+                <div><b>ถูกหรือผิด</b> | สายงานใน Cluster Product &amp; Business Solutions ที่เพิ่มมาใหม่ คือ สายงาน Digital Solutions</div>
+                <div class="quiz-opts">
+                  <div class="opt">✅ ถูก</div>
+                  <div class="opt">❌ ผิด</div>
+                </div>
+              </div>
+            </div>
+
+            </div><!-- /panel: summary -->
+
+            <!-- panel: images (slider) -->
+            <div class="tab-panel" data-panel="images" hidden>
+              <div class="slider">
+                <div class="slide-main"><img id="slideImg2" src="assets/case2/case2-1.png" alt="รูปภาพ 1" /></div>
+                <div class="slide-nav">
+                  <button class="snav" id="slidePrev2" aria-label="ก่อนหน้า">‹</button>
+                  <div class="thumbs">
+                    <div class="thumb active" data-i="0" style="background-image:url('assets/case2/case2-1.png')"></div>
+                    <div class="thumb" data-i="1" style="background-image:url('assets/case2/case2-2.png')"></div>
+                    <div class="thumb" data-i="2" style="background-image:url('assets/case2/case2-3.png')"></div>
+                    <div class="thumb" data-i="3" style="background-image:url('assets/case2/case2-4.jpg')"></div>
+                  </div>
+                  <button class="snav" id="slideNext2" aria-label="ถัดไป">›</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- panel: files (links wired later) -->
+            <div class="tab-panel" data-panel="files" hidden>
+              <div class="files">
+                <div class="files-head">
+                  <span class="fh-title">ลิงก์ทั้งหมด</span>
+                  <a class="dl-all" href="https://ibmdt.sharepoint.com/sites/Guest_ENT-CYNX/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2FFATCA&viewid=fa3a5b69%2D044a%2D4fbf%2Dbaf0%2D20fec934e5a0&p=true&ga=1" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    ดาวน์โหลดทั้งหมด
+                  </a>
+                </div>
+                <div class="files-body">
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQCcDkOwnRW0RIP9q_GF6nSlAbry6PVS9QGoN5JhS5ATzeU?e=gVsHy8" target="_blank" rel="noopener">Link</a><span>เรื่องเด่นเรื่องเด็ด FATCA 1</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQBaJCqNaK5iQKdFeTYBSHlsATlaQSmK_wTa0c-rwP0Uk2s?e=H0Xxsp" target="_blank" rel="noopener">Link</a><span>เรื่องเด่นเรื่องเด็ด FATCA 2</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQBaJCqNaK5iQKdFeTYBSHlsATlaQSmK_wTa0c-rwP0Uk2s?e=H0Xxsp" target="_blank" rel="noopener">Link</a><span>เรื่องเด่นเรื่องเด็ด FATCA 3</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQCrQn6XTr8LRKh9mG2RkQDRAZ8bdunvAM8QBnZLcxX8iAo?e=OXEXo3" target="_blank" rel="noopener">Link</a><span>[CLMG] การกรอกและบันทึกแบบฟอร์มFATCA&amp;CRS</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQANyF8iWrfkQLydVGGJJwEcAbpsXGRgQobLsfl3pwVPfm0?e=8JqzWA" target="_blank" rel="noopener">Link</a><span>CLMG_CRS-FATCA สื่อสาร EP2</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQDk-bbjHrOaTKAA98Jvl6HuAf620v6kpUsBMWi1X8U72TE?e=wu3IDE" target="_blank" rel="noopener">Link</a><span>CLMG_CRS-FATCA สื่อสาร EP3</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQAKE_uD82TlQKDmLJwNK9tOAb_7-h-HqHGK-eD1EY2a1r4?e=oRoiTy" target="_blank" rel="noopener">Link</a><span>CLMG_CRS-FATCA สื่อสาร EP4-250925</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQBjdz6D84H2Q5aDLjfp6zuUARl0wdwshxrpvZo9ohVfwVo?e=i4mPaB" target="_blank" rel="noopener">Link</a><span>[CLMG] EP3คู่มือการเปิดบัญชีทางการเงินใหม่ สำหรับลูกค้าบุคคลธรรมดาและลูกค้านิติบุคคลและแบบฟอร์ม FATCA&amp;CRS</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQA27QDSswk_ToxnRouvadl1AWTxAkXeM4TJZBL-oTRnlzo?e=HGgNbt" target="_blank" rel="noopener">Link</a><span>NRR พารู้ FATCA</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQCE44hMin8eR7M6Rk3iJkDJAYOB5uvcFjO7hMH0MsmDoO8?e=KYzjw6" target="_blank" rel="noopener">Link</a><span>นว คู่มือเปิดบัญชีตาม FATCA</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQDbDC-K4g31QLnRwrmBuNCwAcfFdVm8MD0dLmki29Ziq4E?e=bmWW2E" target="_blank" rel="noopener">Link</a><span>นว แบบแจ้งความเป็นบุคคลอเมริกัน</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQCTi9f-oei_Q6tzsMNnKiLVAda8z7jguJz5TMXdfEXJZE4?e=T3uQHY" target="_blank" rel="noopener">Link</a><span>แบบแจ้งความเป็นบุคคลอเมริกัน FATCA &amp; CRS 01</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQBuYDbyx-QAR4uakBCqho5eAfW4gfwUURjAJ9EhuZY-VCs?e=pqzn1v" target="_blank" rel="noopener">Link</a><span>แบบแจ้งความเป็นบุคคลอเมริกัน FATCA &amp; CRS 03</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQDJ1pdwyPwLRK76ID4ijlK4Af8si5HZhrvPjLy7_hgmOBA?e=KEPLIZ" target="_blank" rel="noopener">Link</a><span>ระเบียบ FATCA NRR.177 / 2568</span></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- pinned footer -->
+        <div class="detail-footer">
+          <button class="fbtn back" id="detailBack2">ย้อนกลับ</button>
+          <div class="fr">
+            <button class="fbtn share">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 8a3 3 0 100-6 3 3 0 000 6zM6 15a3 3 0 100-6 3 3 0 000 6zM18 22a3 3 0 100-6 3 3 0 000 6zM8.6 13.5l6.8 4M15.4 6.5l-6.8 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              แชร์เพื่อบอกต่อ
+            </button>
+            <button class="fbtn read">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              ทำเครื่องหมายว่าอ่านแล้ว
+            </button>
+          </div>
+        </div>
+
+        <!-- question card (share / quiz) -->
+        <div class="ask-dim">
+          <div class="ask-card">
+            <button class="ask-close" aria-label="ปิด"><img src="assets/close.svg" alt="close" /></button>
+            <div class="ask-icon">?</div>
+            <div class="ask-text"><span class="blue">ทีมงานอยากทราบ</span><br />คุณคาดหวังอะไร<br />จากการกดปุ่มนี้?</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- detail modal 3 (Sales Sheet สินเชื่อ) -->
+    <div class="detail" id="detail3" role="dialog" aria-label="รายละเอียดข่าว 3">
+      <div class="detail-card">
+
+        <div class="detail-body" id="detailBody3">
+          <div class="detail-head">
+            <div class="title">Morning Spark!</div>
+            <button class="modal-close" id="detailClose3" aria-label="ปิด"><img src="assets/close.svg" alt="close" /></button>
+          </div>
+
+          <!-- article preview -->
+          <div class="article-card">
+            <div class="feed-inner" style="border-bottom:none; padding-bottom:0;">
+              <div class="fi-top">
+                <div class="tags"><span class="tag red">บังคับใช้ 15/07/2568</span></div>
+                <div class="fi-date">วันที่โพสต์: 11 มิ.ย. 2568</div>
+              </div>
+              <div class="fi-title">เปลี่ยนแปลง Sales Sheet สินเชื่อ</div>
+              <div class="fi-bottom">
+                <div class="cats"><span class="cat">สินเชื่อ</span><span class="cat">สินค้าและบริการ</span></div>
+                <div class="read-status"><span class="dot unread"></span>ยังไม่อ่าน</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-changes">
+
+            <div class="tabs">
+              <div class="tab active" data-tab="summary"><span class="ic">📡</span>ข้อมูลสรุป</div>
+              <div class="tab" data-tab="images"><span class="ic">🖼️</span>ข้อมูลรูปภาพ</div>
+              <div class="tab" data-tab="files"><span class="ic">🗄️</span>ไฟล์เอกสารทั้งหมด</div>
+            </div>
+
+            <!-- panel: summary -->
+            <div class="tab-panel" data-panel="summary">
+
+              <!-- สรุปข่าว -->
+              <div class="sec">
+                <div class="sec-head"><span class="ic">📣</span><span class="h">สรุปข่าว</span></div>
+                <div class="change-row">
+                  <ol>
+                    <li>ยกเลิก Sales Sheet เดิม: (CDU.) 556 / 2568 เปลี่ยนเป็น
+                      <ol style="display:block;list-style:lower-alpha;padding-left:24px;">
+                        <li>สินเชื่อเพื่อที่อยู่อาศัย: <a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQC-_l7XlYuCT6BFVOD99jW7ATQcNyyXIhG-odE13TORCgA?e=3218bN" target="_blank" rel="noopener">CDU414 แนบ 1</a></li>
+                        <li>สินเชื่อ Home for Cash: <a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQBvzbb_B_TlTKPdcJmMVhnAAaQb4798PLHpYlwCQm5A7jM?e=dPQK2h" target="_blank" rel="noopener">CDU414 แนบ 2</a></li>
+                        <li>สินเชื่อกรุงไทยบ้านแลกเงิน: <a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQB_Vb-nmnttTqOoQXooOw4fAdHnVWTvbPOGJyRynibvgGk?e=JFhsB3" target="_blank" rel="noopener">CDU414 แนบ 3</a></li>
+                      </ol>
+                    </li>
+                    <li>ยกเลิก Sales Sheet เดิม: CDU.) 48 / 2569 (โครงการสินเชื่อรวมหนี้ข้าราชการยั่งยืน) เปลี่ยนเป็น
+                      <ol style="display:block;list-style:lower-alpha;padding-left:24px;">
+                        <li>สินเชื่อเพื่อที่อยู่อาศัยและสินเชื่อ Top up (Home for Cash): <a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQCdivvGcQK8Tqc9lRTBT6OBASQ-2ZcVcTm7ZVfqORRvHyU?e=6H5OVt" target="_blank" rel="noopener">CDU414 แนบ 4</a></li>
+                        <li>สินเชื่อ Home for Cash (Top up): <a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQAtwRq6Iwa5QbliUbfDbK7NAbmi8iMpFTjjShScec7c6Qc?e=j36TVd" target="_blank" rel="noopener">CDU414 แนบ 5</a></li>
+                        <li>สินเชื่อกรุงไทยบ้านแลกเงิน: <a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQCMt1FO2DSpTbowbCpDWDslAQPnSYVGa-gkd0L2RLZMt5o?e=1NBBHi" target="_blank" rel="noopener">CDU414 แนบ 6</a></li>
+                      </ol>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+
+              <!-- ข้อปฎิบัติที่เปลี่ยนไป -->
+              <div class="sec">
+                <div class="sec-head"><span class="ic">🔧</span><span class="h">ข้อปฎิบัติที่เปลี่ยนไป</span></div>
+                <div class="sub-tabs">
+                  <div class="sub-tab active" data-scroll="top">ทั้งหมด</div>
+                  <div class="sub-tab" data-scroll="ct6">หน่วยงานที่รับลูกค้า</div>
+                </div>
+                <div class="ctable" id="ct6">
+                  <div class="grp-head">หน่วยงานที่รับลูกค้า (หน้าเคาน์เตอร์/บริการ)</div>
+                  <div class="crow">
+                    <div class="c-desc"><b>แจ้งข้อมูลกับลูกค้า:</b>
+                      <ul>
+                        <li><b>สินเชื่อกรุงไทยบ้านแลกเงิน</b> วงเงินกู้ยืม
+                          <ul>
+                            <li>ลูกค้าใหม่ : วงเงินกู้ขั้นต่ำ 5 แสนบาท สูงสุด 20 ล้านบาท</li>
+                            <li>ลูกค้ารายเดิมขอวงเงินเพิ่ม : วงเงินให้กู้สูงสุด 20 ล้านบาท</li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="c-link"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQB_Vb-nmnttTqOoQXooOw4fAdHnVWTvbPOGJyRynibvgGk?e=JFhsB3" target="_blank" rel="noopener">CDU414 แนบ 3</a></div>
+                    <div class="c-ref">(หน้า 1) 1 วงเงินกู้ยืม</div>
+                  </div>
+                  <div class="crow">
+                    <div class="c-desc"><b>ข้อควรระวัง:</b>
+                      <ul>
+                        <li><b>สินเชื่อเพื่อที่อยู่อาศัย, Home for Cash และบ้านแลกเงิน รวมถึงสินเชื่อในโครงการสินเชื่อ รวมหนี้ข้าราชการยั่งยืน</b>
+                          <ul>
+                            <li>ธนาคารไม่มีนโยบายการเรียกเงินสดหรือให้โอนเงินเข้าบัญชีส่วนตัวของพนักงานทุกกรณี</li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="c-link">
+                      <ul>
+                        <li><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQC-_l7XlYuCT6BFVOD99jW7ATQcNyyXIhG-odE13TORCgA?e=3218bN" target="_blank" rel="noopener">CDU414 แนบ 1</a></li>
+                        <li><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQBvzbb_B_TlTKPdcJmMVhnAAaQb4798PLHpYlwCQm5A7jM?e=dPQK2h" target="_blank" rel="noopener">CDU414 แนบ 2</a></li>
+                        <li><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQB_Vb-nmnttTqOoQXooOw4fAdHnVWTvbPOGJyRynibvgGk?e=JFhsB3" target="_blank" rel="noopener">CDU414 แนบ 3</a></li>
+                        <li><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQCdivvGcQK8Tqc9lRTBT6OBASQ-2ZcVcTm7ZVfqORRvHyU?e=6H5OVt" target="_blank" rel="noopener">CDU414 แนบ 4</a></li>
+                        <li><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQAtwRq6Iwa5QbliUbfDbK7NAbmi8iMpFTjjShScec7c6Qc?e=j36TVd" target="_blank" rel="noopener">CDU414 แนบ 5</a></li>
+                        <li><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQCMt1FO2DSpTbowbCpDWDslAQPnSYVGa-gkd0L2RLZMt5o?e=1NBBHi" target="_blank" rel="noopener">CDU414 แนบ 6</a></li>
+                      </ul>
+                    </div>
+                    <div class="c-ref">
+                      (หน้า 2) 10 ข้อควรระวังเรื่องสำคัญ<br />
+                      (หน้า 2) 10 ข้อควรระวังเรื่องสำคัญ<br />
+                      (หน้า 2) 10 ข้อควรระวังเรื่องสำคัญ<br />
+                      (หน้า 3) 11 ข้อควรระวังเรื่องสำคัญ<br />
+                      (หน้า 3) 11 ข้อควรระวังเรื่องสำคัญ<br />
+                      (หน้า 3) 11 ข้อควรระวังเรื่องสำคัญ
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- สอบถามข้อมูลเพิ่มเติม -->
+              <div class="sec">
+                <div class="sec-head"><span class="ic">📞</span><span class="h">สอบถามข้อมูลเพิ่มเติม</span></div>
+                <div class="qa">
+                  <b>ทีม Credit Product (งานผลิตภัณฑ์สินเชื่อที่อยู่อาศัย)</b><br />
+                  โทร. <span class="phone">0-2208-7045, 7209, 7219, 7454, 7726, 7362</span>
+                </div>
+              </div>
+
+              <!-- มาลองทบทวนไปด้วยกันนะ -->
+              <div class="sec">
+                <div class="sec-head"><span class="ic">📖</span><span class="h">มาลองทบทวนไปด้วยกันนะ</span></div>
+                <div class="quiz">
+                  <div><b>ถูกหรือผิด</b> | ธนาคารจะมีการเรียกรับเงินสดหรือให้โอนเงินเข้าบัญชีส่วนตัวของพนักงานเมื่อมีความจำเป็น</div>
+                  <div class="quiz-opts">
+                    <div class="opt">✅ ถูก</div>
+                    <div class="opt">❌ ผิด</div>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /panel: summary -->
+
+            <!-- panel: images (slider) -->
+            <div class="tab-panel" data-panel="images" hidden>
+              <div class="slider">
+                <div class="slide-main"><img id="slideImg3" src="assets/case3/case3-1.png" alt="รูปภาพ 1" /></div>
+                <div class="slide-nav">
+                  <button class="snav" id="slidePrev3" aria-label="ก่อนหน้า">‹</button>
+                  <div class="thumbs">
+                    <div class="thumb active" data-i="0" style="background-image:url('assets/case3/case3-1.png')"></div>
+                    <div class="thumb" data-i="1" style="background-image:url('assets/case3/case3-2.png')"></div>
+                  </div>
+                  <button class="snav" id="slideNext3" aria-label="ถัดไป">›</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- panel: files (links wired later) -->
+            <div class="tab-panel" data-panel="files" hidden>
+              <div class="files">
+                <div class="files-head">
+                  <span class="fh-title">ลิงก์ทั้งหมด</span>
+                  <a class="dl-all" href="https://ibmdt.sharepoint.com/sites/Guest_ENT-CYNX/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2F%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%2F%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%81%E0%B8%B9%E0%B9%89%E0%B8%9A%E0%B9%89%E0%B8%B2%E0%B8%99&viewid=fa3a5b69%2D044a%2D4fbf%2Dbaf0%2D20fec934e5a0&p=true&ga=1" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    ดาวน์โหลดทั้งหมด
+                  </a>
+                </div>
+                <div class="files-body">
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQC-_l7XlYuCT6BFVOD99jW7ATQcNyyXIhG-odE13TORCgA?e=Dko1u0" target="_blank" rel="noopener">Link</a><span>CDU414 แนบ 1.pdf</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQBvzbb_B_TlTKPdcJmMVhnAAaQb4798PLHpYlwCQm5A7jM?e=8cov2m" target="_blank" rel="noopener">Link</a><span>CDU414 แนบ 2.pdf</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQB_Vb-nmnttTqOoQXooOw4fAdHnVWTvbPOGJyRynibvgGk?e=GtnUZk" target="_blank" rel="noopener">Link</a><span>CDU414 แนบ 3.pdf</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQCdivvGcQK8Tqc9lRTBT6OBASQ-2ZcVcTm7ZVfqORRvHyU?e=qGmr9P" target="_blank" rel="noopener">Link</a><span>CDU414 แนบ 4.pdf</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQAtwRq6Iwa5QbliUbfDbK7NAbmi8iMpFTjjShScec7c6Qc?e=vua0ei" target="_blank" rel="noopener">Link</a><span>CDU414 แนบ 5.pdf</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQCMt1FO2DSpTbowbCpDWDslAQPnSYVGa-gkd0L2RLZMt5o?e=CPLZG6" target="_blank" rel="noopener">Link</a><span>CDU414 แนบ 6.pdf</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQB2lrpviPhrSI1knXmJPpMvAQm3nvfhSW-HWLK6kSwhIp4?e=bO1v6M" target="_blank" rel="noopener">Link</a><span>นว ปรับปรุงเอกสารสินเชื่อบ้าน.pdf</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQDZOBglHf_9RLnG8tSBbb1WAagE3AwzHtviNLXbfzlVKHE?e=gwbThL" target="_blank" rel="noopener">Link</a><span>เรื่องเด่นเรื่องเด็ด375-แจ้งปรับปรุง Sales Sheet สินเชื่อเพื่อที่อยู่อาศัย.png</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQA3djv_mfGWTZWh2MHoEu0uAa6zfTUxW0oDdCAjLzXtQE8?e=F7cql8" target="_blank" rel="noopener">Link</a><span>เรื่องเด่นเรื่องเด็ด629-การกรอกตารางภาระหนี้ NEW MEMO สินเชื่อที่อยู่อาศัย.png</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQAQpHP9tib1QZMj5St4uHYMAV9aV_nj-OiZUdWF0lWynVU?e=dgyDAD" target="_blank" rel="noopener">Link</a><span>ระเบียบ สินเชื่อกรุงไทย Smart Home Loan.pdf</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQAwaZ0djcxQQ4PdQZupNH59AWirWeE0pchKzdDvKkhfeWA?e=d27vvu" target="_blank" rel="noopener">Link</a><span>ระเบียบ สินเชื่อที่อยู่อาศัยกลาโหม.pdf</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQC_ESm8LreMRYF0u-wSlQbOASRmKgy_lJKYfu53YWLm0U0?e=YWazcw" target="_blank" rel="noopener">Link</a><span>ระเบียบ สินเชื่อที่อยู่อาศัยข้าราชการ.pdf</span></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- pinned footer -->
+        <div class="detail-footer">
+          <button class="fbtn back" id="detailBack3">ย้อนกลับ</button>
+          <div class="fr">
+            <button class="fbtn share">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 8a3 3 0 100-6 3 3 0 000 6zM6 15a3 3 0 100-6 3 3 0 000 6zM18 22a3 3 0 100-6 3 3 0 000 6zM8.6 13.5l6.8 4M15.4 6.5l-6.8 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              แชร์เพื่อบอกต่อ
+            </button>
+            <button class="fbtn read">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              ทำเครื่องหมายว่าอ่านแล้ว
+            </button>
+          </div>
+        </div>
+
+        <!-- question card (share / quiz) -->
+        <div class="ask-dim">
+          <div class="ask-card">
+            <button class="ask-close" aria-label="ปิด"><img src="assets/close.svg" alt="close" /></button>
+            <div class="ask-icon">?</div>
+            <div class="ask-text"><span class="blue">ทีมงานอยากทราบ</span><br />คุณคาดหวังอะไร<br />จากการกดปุ่มนี้?</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- detail modal 4 (บัญชีม้า) -->
+    <div class="detail" id="detail4" role="dialog" aria-label="รายละเอียดข่าว 4">
+      <div class="detail-card">
+
+        <div class="detail-body" id="detailBody4">
+          <div class="detail-head">
+            <div class="title">Morning Spark!</div>
+            <button class="modal-close" id="detailClose4" aria-label="ปิด"><img src="assets/close.svg" alt="close" /></button>
+          </div>
+
+          <!-- article preview -->
+          <div class="article-card">
+            <div class="feed-inner" style="border-bottom:none; padding-bottom:0;">
+              <div class="fi-top">
+                <div class="tags"><span class="tag purple">เน้นย้ำ</span></div>
+                <div class="fi-date">วันที่โพสต์: 11 มิ.ย. 2568</div>
+              </div>
+              <div class="fi-title">การยกระดับมาตรการจัดการภัยทุจริตทางการเงิน: บัญชีม้า</div>
+              <div class="fi-bottom">
+                <div class="cats"><span class="cat">มาตการ</span><span class="cat">ทุจริต</span><span class="cat">บัญชีม้า</span></div>
+                <div class="read-status"><span class="dot unread"></span>ยังไม่อ่าน</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-changes">
+
+            <div class="tabs">
+              <div class="tab active" data-tab="summary"><span class="ic">📡</span>หนังสือเวียน</div>
+              <div class="tab" data-tab="images"><span class="ic">🖼️</span>ข้อมูลรูปภาพ</div>
+              <div class="tab" data-tab="files"><span class="ic">🗄️</span>ไฟล์เอกสารทั้งหมด</div>
+            </div>
+
+            <!-- panel: summary (หนังสือเวียน) -->
+            <div class="tab-panel" data-panel="summary">
+
+              <div class="sec">
+                <div class="sec-head"><span class="ic">🔧</span><span class="h">หนังสือเวียน</span></div>
+                <div class="change-row">
+                  <ol>
+                    <li>หนังสือเวียน: <a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQAQ6Ymus4QbR4pf6-yAFWJUAUPtAN7BmaUT6ZzAMIUebW4?e=ZBi5rH" target="_blank" rel="noopener">บัญชีม้า</a></li>
+                    <li>หนังสือเวียน: <a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQAV425jWHPkTI68zQDmuiGgAV6TjhfFNlbcIhisJQkbW_w?e=Id7l6x" target="_blank" rel="noopener">มาตรการบริหารจัดการการเปิดบัญชีสำหรับนิติบุคคล (บัญชีม้า)</a></li>
+                    <li>หนังสือเวียน: <a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQDyUaIBqmiLSoT4XLhN-yU5ARkgG7Sjdp-UDp00KvoFHUE?e=ahZrbu" target="_blank" rel="noopener">เปิดบัญชีให้ทหาร (บัญชีม้า)</a></li>
+                  </ol>
+                </div>
+              </div>
+
+              <!-- สอบถามข้อมูลเพิ่มเติม -->
+              <div class="sec">
+                <div class="sec-head"><span class="ic">📞</span><span class="h">สอบถามข้อมูลเพิ่มเติม</span></div>
+                <div class="qa">
+                  <b>ทีม Legal Compliance and Financial Crime</b><br />
+                  โทร. <span class="phone">02-208-3844, 3391 (ปริญญา, ชลาลัย)</span>
+                </div>
+              </div>
+
+              <!-- มาลองทบทวนไปด้วยกันนะ -->
+              <div class="sec">
+                <div class="sec-head"><span class="ic">📖</span><span class="h">มาลองทบทวนไปด้วยกันนะ</span></div>
+                <div class="quiz">
+                  <div><b>ถูกหรือผิด</b> | xxxxxx</div>
+                  <div class="quiz-opts">
+                    <div class="opt">✅ ถูก</div>
+                    <div class="opt">❌ ผิด</div>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /panel: summary -->
+
+            <!-- panel: images (slider) -->
+            <div class="tab-panel" data-panel="images" hidden>
+              <div class="slider">
+                <div class="slide-main"><img id="slideImg4" src="assets/case4/case4-1.png" alt="รูปภาพ 1" /></div>
+                <div class="slide-nav">
+                  <button class="snav" id="slidePrev4" aria-label="ก่อนหน้า">‹</button>
+                  <div class="thumbs">
+                    <div class="thumb active" data-i="0" style="background-image:url('assets/case4/case4-1.png')"></div>
+                    <div class="thumb" data-i="1" style="background-image:url('assets/case4/case4-2.png')"></div>
+                    <div class="thumb" data-i="2" style="background-image:url('assets/case4/case4-3.png')"></div>
+                    <div class="thumb" data-i="3" style="background-image:url('assets/case4/case4-4.png')"></div>
+                  </div>
+                  <button class="snav" id="slideNext4" aria-label="ถัดไป">›</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- panel: files -->
+            <div class="tab-panel" data-panel="files" hidden>
+              <div class="files">
+                <div class="files-head">
+                  <span class="fh-title">ลิงก์ทั้งหมด</span>
+                  <a class="dl-all" href="https://ibmdt.sharepoint.com/sites/Guest_ENT-CYNX/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2F%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%E0%B8%A1%E0%B9%89%E0%B8%B2&viewid=fa3a5b69%2D044a%2D4fbf%2Dbaf0%2D20fec934e5a0&p=true&ga=1" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    ดาวน์โหลดทั้งหมด
+                  </a>
+                </div>
+                <div class="files-body">
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQCLQCoyp9aVTp-DHieS8FSVAaVDyBU96WpjWHBDvr4RfZw?e=ecdr9E" target="_blank" rel="noopener">Link</a><span>FinancialCrime Awareness-EP2- ทบทวนการปฏิบัติงาน เรื่อง บัญชีม้า 3 สี.png</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQBzcRpoNRD6SLoDod2xcmoBAY_AzpkwlLgKUOWJPvJ5RIA?e=jg5WG7" target="_blank" rel="noopener">Link</a><span>FinancialCrimeAwareness-EP23-ความเหมือนที่แตกต่างระหว่างม้าดำ(MA)กับม้าเทาเข้ม(MAG1).png</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQC13pdQrlBASJGSYiemC-HIAX6CYVq6mRB-zVpooSDAWKQ?e=wFvgIC" target="_blank" rel="noopener">Link</a><span>FinancialCrimeAwareness-EP24-ม้าเทาอ่อน(MAG2)แต่เรื่องไม่อ่อน.png</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQBHWsoMeePIRbTjZG01EhS7AUbJ_nNynvEkA7oR3VgEN90?e=JO7dph" target="_blank" rel="noopener">Link</a><span>FinancialCrimeAwareness-EP26-เน้นย้ำม้าเทาเข้ม(MAG1).png</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQD_pFT60BmnQ7Rkzblfr13iAVVdCKAC5imHTUkCyHZ7CRg?e=5IIkfA" target="_blank" rel="noopener">Link</a><span>FinancialCrimeAwareness-EP27-ลูกค้าบัญชีม้าเทามาติดต่อสาขาต้องปฏิบัติอย่างไร.png</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQD7gYylVuUSSZFwqjuvqKXfATsjYvDbbKV1QAt6KRWXzAk?e=h0IGdG" target="_blank" rel="noopener">Link</a><span>FinancialCrimeAwareness-EP6-ข้อปฏิบัติเมื่อพบบัญชีติด Restriction บัญชีม้า.png</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQAV0IdpGUm-Qa_Y9dNQhOWPAdd0P4rpvie_IRYoFbPI0IE?e=4RDCQd" target="_blank" rel="noopener">Link</a><span>FinancialCrimeAwareness-EP7-มาตรการปิดปากม้า.png</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQBE6zj3lb3kQJdNtoitE99_ARLl9wkkzGOe3lt0ZDVS5I8?e=CgYPs6" target="_blank" rel="noopener">Link</a><span>IT Compliance EP012026 ประกาศ Shared Resp. e-Payment.png</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQA77vCHXB-7Rp3OkyGMWVj2AV6HMPxaiQYp5tH_j47pU3g?e=RzZuPg" target="_blank" rel="noopener">Link</a><span>IT Compliance EP022026 หลักเกณฑ์การบริหารจัดการความเสี่ยงของธุรกรรมที่เกี่ยวข้องกับเงินสดสำหรับสถาบันการเงิน.jpg</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQCtxqZwZhqySqfv8-N4fpz7AWdtFfqQXI1WOlDhC5s42Ts?e=5GhOcS" target="_blank" rel="noopener">Link</a><span>ITComplianceEP07-2024-การยกระดับมาตรการจัดการภัยทุจริตทางการเงินตอนที่ 1.png</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQD8LvL-HpKBTK6rBa1QMWc3ARWHOiVeB8ueY2dVv0u6v2E?e=bC1KBI" target="_blank" rel="noopener">Link</a><span>ITComplianceEP08-2024-การยกระดับมาตรการจัดการภัยทุจริตทางการเงินตอนที่ 2.png</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQCN3S_G9gjjSLa_V4MjJmoHAZ915FSoWDKcmeqdLieI2HY?e=pve1Wi" target="_blank" rel="noopener">Link</a><span>ITComplianceEP09-2024-การยกระดับมาตรการจัดการภัยทุจริตทางการเงินตอนที่ 3.png</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQBaHuTl5fOlQ57W-57JBhk3AZYF0xHlEj-tqnbJykIW8Ag?e=lroU9k" target="_blank" rel="noopener">Link</a><span>Demo ครั้งที่ 1ทบทวนโยบายการบริหารจัดการภัยทุจริต.pdf</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQAQ6Ymus4QbR4pf6-yAFWJUAUPtAN7BmaUT6ZzAMIUebW4?e=ZBi5rH" target="_blank" rel="noopener">Link</a><span>นว บัญชีม้า.pdf</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQAV425jWHPkTI68zQDmuiGgAV6TjhfFNlbcIhisJQkbW_w?e=Id7l6x" target="_blank" rel="noopener">Link</a><span>นว มาตรการการบริหารจัดการการเปิดบัญชีสำหรับนิติบุคคล (บัญชีม้า).pdf</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQDyUaIBqmiLSoT4XLhN-yU5ARkgG7Sjdp-UDp00KvoFHUE?e=ahZrbu" target="_blank" rel="noopener">Link</a><span>นวเปิดบัญชีให้ทหาร (บัญชีม้า).pdf</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQDS84uyBZJ-R7mcWYdPy36kAa7So3N1ElV2mi1wDRTIP2s?e=SoI6rk" target="_blank" rel="noopener">Link</a><span>เรื่องเด่นเรื่องเด็ด-การเปิดบัญชีให้แก่ทหารกองประจําการกรณีถูกอายัดบัญชี.png</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQCHyAJofjFFS7fmDH6P8pLXAVGp7EP2qEjeqQqHiSDO2fg?e=NfzlYc" target="_blank" rel="noopener">Link</a><span>เรื่องเด่นเรื่องเด็ด-จำกัดการใช้งานของกลุ่มบัญชีม้า.png</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQD56On9786VT64VGabp9v6aAZ3aCqp8EC9nv9C6dhjyuaM?e=Vf8VLM" target="_blank" rel="noopener">Link</a><span>เรื่องเด่นเรื่องเด็ด-แนวปฏิบัติกรณีลูกค้าม้าเทาอ่อน มาทำ EDD.png</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQDBqbqmmKm9RabHiVq7PCHsAY9r-P_tTM_awexHqRpN874?e=FrJK8i" target="_blank" rel="noopener">Link</a><span>เรื่องเด่นเรื่องเด็ด-มาตรการยกระดับการจัดการบัญชีม้า.png</span></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- pinned footer -->
+        <div class="detail-footer">
+          <button class="fbtn back" id="detailBack4">ย้อนกลับ</button>
+          <div class="fr">
+            <button class="fbtn share">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 8a3 3 0 100-6 3 3 0 000 6zM6 15a3 3 0 100-6 3 3 0 000 6zM18 22a3 3 0 100-6 3 3 0 000 6zM8.6 13.5l6.8 4M15.4 6.5l-6.8 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              แชร์เพื่อบอกต่อ
+            </button>
+            <button class="fbtn read">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              ทำเครื่องหมายว่าอ่านแล้ว
+            </button>
+          </div>
+        </div>
+
+        <!-- question card (share / quiz) -->
+        <div class="ask-dim">
+          <div class="ask-card">
+            <button class="ask-close" aria-label="ปิด"><img src="assets/close.svg" alt="close" /></button>
+            <div class="ask-icon">?</div>
+            <div class="ask-text"><span class="blue">ทีมงานอยากทราบ</span><br />คุณคาดหวังอะไร<br />จากการกดปุ่มนี้?</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
     <!-- taskbar (from index.html) -->
     <div class="taskbar">
       <div class="weather">
@@ -891,9 +1458,18 @@
     const detail = document.getElementById('detail');
     const detailClose = document.getElementById('detailClose');
     const detailBack = document.getElementById('detailBack');
+    const detail2 = document.getElementById('detail2');
+    const detailClose2 = document.getElementById('detailClose2');
+    const detailBack2 = document.getElementById('detailBack2');
+    const detail3 = document.getElementById('detail3');
+    const detailClose3 = document.getElementById('detailClose3');
+    const detailBack3 = document.getElementById('detailBack3');
+    const detail4 = document.getElementById('detail4');
+    const detailClose4 = document.getElementById('detailClose4');
+    const detailBack4 = document.getElementById('detailBack4');
 
-    // reset first item back to unread (read state is per-open only)
-    const resetRead = () => { const rs = document.querySelector('#modal .feed-item .read-status'); if (rs) rs.innerHTML = '<span class="dot unread"></span>ยังไม่อ่าน'; };
+    // reset all items back to unread (read state is per-open only)
+    const resetRead = () => { document.querySelectorAll('#modal .feed-item .read-status').forEach(rs => rs.innerHTML = '<span class="dot unread"></span>ยังไม่อ่าน'); };
 
     const open  = () => { popup.classList.add('open'); overlay.classList.add('open'); };
     const close = () => { popup.classList.remove('open'); overlay.classList.remove('open'); resetRead(); };
@@ -905,13 +1481,25 @@
     // open real article detail (first article only) — closes popup + expand
     const openDetail  = () => { popup.classList.remove('open'); modal.classList.remove('open'); detail.classList.add('open'); overlay.classList.add('open'); };
     const closeDetail = () => { detail.classList.remove('open'); overlay.classList.remove('open'); resetRead(); };
+    // second article detail (FATCA) — closes popup + expand
+    const openDetail2  = () => { popup.classList.remove('open'); modal.classList.remove('open'); detail2.classList.add('open'); overlay.classList.add('open'); };
+    const closeDetail2 = () => { detail2.classList.remove('open'); overlay.classList.remove('open'); resetRead(); };
+    const backToModal2 = () => { detail2.classList.remove('open'); modal.classList.add('open'); overlay.classList.add('open'); };
+    // third article detail (Sales Sheet สินเชื่อ) — closes popup + expand
+    const openDetail3  = () => { popup.classList.remove('open'); modal.classList.remove('open'); detail3.classList.add('open'); overlay.classList.add('open'); };
+    const closeDetail3 = () => { detail3.classList.remove('open'); overlay.classList.remove('open'); resetRead(); };
+    const backToModal3 = () => { detail3.classList.remove('open'); modal.classList.add('open'); overlay.classList.add('open'); };
+    // fourth article detail (บัญชีม้า) — closes popup + expand
+    const openDetail4  = () => { popup.classList.remove('open'); modal.classList.remove('open'); detail4.classList.add('open'); overlay.classList.add('open'); };
+    const closeDetail4 = () => { detail4.classList.remove('open'); overlay.classList.remove('open'); resetRead(); };
+    const backToModal4 = () => { detail4.classList.remove('open'); modal.classList.add('open'); overlay.classList.add('open'); };
     // no-detail link -> show question card INSIDE its container (popup/modal), keep it open
     const showAsk = (el) => { const c = el.closest('.popup, .modal-card, .detail-card'); if (!c) return; c.scrollTop = 0; c.querySelector('.ask-dim').classList.add('open'); };
     const hideAllAsk = () => document.querySelectorAll('.ask-dim.open').forEach(d => d.classList.remove('open'));
     // back -> return to expand modal
     const backToModal = () => { detail.classList.remove('open'); modal.classList.add('open'); overlay.classList.add('open'); };
 
-    const closeAll = () => { hideAllAsk(); close(); closeModal(); closeDetail(); };
+    const closeAll = () => { hideAllAsk(); close(); closeModal(); closeDetail(); closeDetail2(); closeDetail3(); closeDetail4(); };
 
     noti.addEventListener('click', open);
     noti.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
@@ -920,64 +1508,98 @@
     modalClose.addEventListener('click', closeModal);
     detailClose.addEventListener('click', closeDetail);
     detailBack.addEventListener('click', backToModal);
+    detailClose2.addEventListener('click', closeDetail2);
+    detailBack2.addEventListener('click', backToModal2);
+    detailClose3.addEventListener('click', closeDetail3);
+    detailBack3.addEventListener('click', backToModal3);
+    detailClose4.addEventListener('click', closeDetail4);
+    detailBack4.addEventListener('click', backToModal4);
     // ask-card close -> hide only that card, container stays open
     document.querySelectorAll('.ask-close').forEach(b => b.addEventListener('click', () => b.closest('.ask-dim').classList.remove('open')));
-    // first article -> real detail; every other -> question card in place
-    document.querySelectorAll('#modal .feed-item').forEach((el, i) => el.addEventListener('click', i === 0 ? openDetail : () => showAsk(el)));
-    document.querySelectorAll('#popup .item').forEach((el, i) => el.addEventListener('click', i === 0 ? openDetail : () => showAsk(el)));
+    // article 1 -> detail; article 2 -> detail2; every other -> question card in place
+    const articleHandler = (el, i) => { if (i === 0) return openDetail; if (i === 1) return openDetail2; if (i === 2) return openDetail3; if (i === 3) return openDetail4; return () => showAsk(el); };
+    document.querySelectorAll('#modal .feed-item').forEach((el, i) => el.addEventListener('click', articleHandler(el, i)));
+    document.querySelectorAll('#popup .item').forEach((el, i) => el.addEventListener('click', articleHandler(el, i)));
     overlay.addEventListener('click', closeAll);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
 
-    // detail tabs (summary / images / files)
-    const detailTabs = document.querySelectorAll('#detail .tab');
-    const detailPanels = document.querySelectorAll('#detail .tab-panel');
-    detailTabs.forEach(t => t.addEventListener('click', () => {
-      detailTabs.forEach(x => x.classList.remove('active'));
-      t.classList.add('active');
-      detailPanels.forEach(p => { p.hidden = p.dataset.panel !== t.dataset.tab; });
-    }));
-
-    // image slider (case1/case1-N.png)
-    const slides = ['assets/case1/case1-1.png', 'assets/case1/case1-2.png', 'assets/case1/case1-3.png', 'assets/case1/case1-4.png'];
-    const slideImg = document.getElementById('slideImg');
-    const thumbs = document.querySelectorAll('#detail .thumb');
-    let slideIdx = 0;
-    const showSlide = (i) => {
-      slideIdx = (i + slides.length) % slides.length;
-      slideImg.src = slides[slideIdx];
-      slideImg.alt = 'รูปภาพ ' + (slideIdx + 1);
-      thumbs.forEach((th, k) => th.classList.toggle('active', k === slideIdx));
+    // detail tabs (summary / images / files) — scoped per modal
+    const wireTabs = (sel) => {
+      const tabs = document.querySelectorAll(sel + ' .tab');
+      const panels = document.querySelectorAll(sel + ' .tab-panel');
+      tabs.forEach(t => t.addEventListener('click', () => {
+        tabs.forEach(x => x.classList.remove('active'));
+        t.classList.add('active');
+        panels.forEach(p => { p.hidden = p.dataset.panel !== t.dataset.tab; });
+      }));
     };
-    document.getElementById('slidePrev').addEventListener('click', () => showSlide(slideIdx - 1));
-    document.getElementById('slideNext').addEventListener('click', () => showSlide(slideIdx + 1));
-    thumbs.forEach((th, k) => th.addEventListener('click', () => showSlide(k)));
+    wireTabs('#detail');
+    wireTabs('#detail2');
+    wireTabs('#detail3');
+    wireTabs('#detail4');
+
+    // image slider — reusable
+    const wireSlider = (imgId, prevId, nextId, thumbSel, slides) => {
+      const img = document.getElementById(imgId);
+      const thumbs = document.querySelectorAll(thumbSel);
+      let idx = 0;
+      const show = (i) => {
+        idx = (i + slides.length) % slides.length;
+        img.src = slides[idx];
+        img.alt = 'รูปภาพ ' + (idx + 1);
+        thumbs.forEach((th, k) => th.classList.toggle('active', k === idx));
+      };
+      document.getElementById(prevId).addEventListener('click', () => show(idx - 1));
+      document.getElementById(nextId).addEventListener('click', () => show(idx + 1));
+      thumbs.forEach((th, k) => th.addEventListener('click', () => show(k)));
+    };
+    wireSlider('slideImg', 'slidePrev', 'slideNext', '#detail .thumb',
+      ['assets/case1/case1-1.png', 'assets/case1/case1-2.png', 'assets/case1/case1-3.png', 'assets/case1/case1-4.png']);
+    wireSlider('slideImg2', 'slidePrev2', 'slideNext2', '#detail2 .thumb',
+      ['assets/case2/case2-1.png', 'assets/case2/case2-2.png', 'assets/case2/case2-3.png', 'assets/case2/case2-4.jpg']);
+    wireSlider('slideImg3', 'slidePrev3', 'slideNext3', '#detail3 .thumb',
+      ['assets/case3/case3-1.png', 'assets/case3/case3-2.png']);
+    wireSlider('slideImg4', 'slidePrev4', 'slideNext4', '#detail4 .thumb',
+      ['assets/case4/case4-1.png', 'assets/case4/case4-2.png', 'assets/case4/case4-3.png', 'assets/case4/case4-4.png']);
 
     // search box + filters (expand modal) -> question card
     document.querySelectorAll('#modal .search-box, #modal .dropdown, #modal .read-filter .pill-all, #modal .read-filter .pill').forEach(el => el.addEventListener('click', () => showAsk(el)));
 
-    // sub-tabs -> scroll detail body to each table group (ทั้งหมด -> top)
-    const detailBody = document.querySelector('#detail .detail-body');
-    document.querySelectorAll('#detail .sub-tab').forEach(t => t.addEventListener('click', () => {
-      document.querySelectorAll('#detail .sub-tab').forEach(x => x.classList.remove('active'));
-      t.classList.add('active');
-      const tgt = t.dataset.scroll;
-      if (tgt === 'top') { detailBody.scrollTo({ top: 0, behavior: 'smooth' }); return; }
-      const el = document.getElementById(tgt);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }));
+    // sub-tabs -> scroll that modal's body to each table group (ทั้งหมด -> top) — all modals
+    const wireSubTabs = (sel) => {
+      const body = document.querySelector(sel + ' .detail-body');
+      const subs = document.querySelectorAll(sel + ' .sub-tab');
+      subs.forEach(t => t.addEventListener('click', () => {
+        subs.forEach(x => x.classList.remove('active'));
+        t.classList.add('active');
+        const tgt = t.dataset.scroll;
+        if (tgt === 'top') { body.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+        const el = document.getElementById(tgt);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }));
+    };
+    wireSubTabs('#detail');
+    wireSubTabs('#detail2');
+    wireSubTabs('#detail3');
+    wireSubTabs('#detail4');
 
-    // share button + quiz options -> same question card inside detail
-    document.querySelectorAll('#detail .fbtn.share, #detail .opt').forEach(el => el.addEventListener('click', () => showAsk(el)));
+    // share button + quiz options -> same question card inside detail (all modals)
+    document.querySelectorAll('#detail .fbtn.share, #detail .opt, #detail2 .fbtn.share, #detail2 .opt, #detail3 .fbtn.share, #detail3 .opt, #detail4 .fbtn.share, #detail4 .opt').forEach(el => el.addEventListener('click', () => showAsk(el)));
 
-    // mark-as-read (mock) -> close detail, open expand list with first item read
-    const markReadBtn = document.querySelector('#detail .fbtn.read');
-    markReadBtn.addEventListener('click', () => {
-      const rs = document.querySelector('#modal .feed-item .read-status');
-      if (rs) rs.innerHTML = '<span class="dot read"></span>อ่านแล้ว';
-      detail.classList.remove('open');
-      modal.classList.add('open');
-      overlay.classList.add('open');
-    });
+    // mark-as-read (mock) -> close detail, open expand list with that item read
+    const wireMarkRead = (detailSel, modalEl, itemIdx) => {
+      document.querySelector(detailSel + ' .fbtn.read').addEventListener('click', () => {
+        const items = document.querySelectorAll('#modal .feed-item .read-status');
+        if (items[itemIdx]) items[itemIdx].innerHTML = '<span class="dot read"></span>อ่านแล้ว';
+        modalEl.classList.remove('open');
+        modal.classList.add('open');
+        overlay.classList.add('open');
+      });
+    };
+    wireMarkRead('#detail', detail, 0);
+    wireMarkRead('#detail2', detail2, 1);
+    wireMarkRead('#detail3', detail3, 2);
+    wireMarkRead('#detail4', detail4, 3);
   </script>
 </body>
 </html>
