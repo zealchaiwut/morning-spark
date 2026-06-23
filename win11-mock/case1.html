@@ -277,6 +277,51 @@
   .tab.active { background:#1192e8; color:#fff; font-weight:700; border-color:#1192e8;
     box-shadow:0 6px 8px rgba(0,0,0,.08); }
   .tab .ic { font-size:1.1em; line-height:1; }
+  .tab { cursor:pointer; }
+  .tab-panel[hidden] { display:none; }
+  .tab-panel { display:flex; flex-direction:column; gap:clamp(20px,3.5vw,41px); }
+
+  /* image slider */
+  .slider { display:flex; flex-direction:column; gap:16px; align-items:center; }
+  .slide-main {
+    width:min(567px,100%); aspect-ratio:567/871; max-height:60vh;
+    border:1px solid #e5e7eb; border-radius:12px; background:#f0f0f0;
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  .slide-main img { width:100%; height:100%; object-fit:contain; display:block; }
+  .slide-nav {
+    width:100%; background:#f5f5f5; border:1px solid #e5e7eb; border-radius:12px;
+    padding:12px 16px; display:flex; align-items:center; justify-content:center; gap:clamp(8px,2vw,26px);
+  }
+  .snav {
+    flex:none; width:clamp(36px,5vw,48px); height:clamp(36px,5vw,48px);
+    border:none; background:#d4edff; border-radius:12px; color:#0072c3;
+    font-size:24px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .thumbs { display:flex; gap:clamp(8px,1.5vw,16px); align-items:center; overflow-x:auto; }
+  .thumb {
+    flex:none; width:clamp(64px,10vw,117px); height:clamp(64px,10vw,117px);
+    border-radius:4px; background:#e0e0e0 center/cover no-repeat; border:2px solid transparent; cursor:pointer;
+  }
+  .thumb.active { border-color:#0043ce; }
+
+  /* files / links */
+  .files { display:flex; flex-direction:column; width:100%; }
+  .files-head {
+    background:#00539a; border:0.5px solid #000; border-radius:6px 6px 0 0;
+    padding:12px; display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap;
+  }
+  .files-head .fh-title { color:#fff; font-weight:700; font-size:clamp(16px,1.9vw,20px); }
+  .dl-all {
+    display:inline-flex; align-items:center; gap:8px; background:#fff;
+    border:1px solid #e5e7eb; border-radius:12px; padding:8px 16px;
+    font-family:inherit; font-weight:700; color:#111827; font-size:clamp(13px,1.5vw,16px);
+    cursor:pointer; white-space:nowrap;
+  }
+  .dl-all svg { width:20px; height:20px; }
+  .files-body { border:0.5px solid #bacdeb; border-top:none; border-radius:0 0 8px 8px; padding:12px; }
+  .file-row { display:flex; gap:8px; padding:4px 0; font-size:clamp(13px,1.6vw,16px); line-height:1.6; color:#000; }
+  .file-row a { color:#0072c3; text-decoration:underline; font-weight:500; flex:none; }
 
   .sec { display:flex; flex-direction:column; gap:12px; }
   .sec-head { display:flex; align-items:center; gap:8px; }
@@ -352,35 +397,14 @@
   .fbtn.read  { background:var(--blue-60); color:#fff; }
   .fbtn svg { width:1em; height:1em; }
 
-  /* ---- blank/mock detail ---- */
-  .blank-body { position:relative; }
-  .blank-notice {
-    position:relative; z-index:3; align-self:center;
-    margin:clamp(16px,3vw,32px) auto 4px;
-    background:#fff; border:2px solid var(--blue-60); border-radius:12px;
-    padding:14px clamp(20px,3vw,28px); color:var(--blue-60); font-weight:700;
-    font-size:clamp(15px,2.4vw,24px); text-align:center;
-    box-shadow:0 8px 24px rgba(0,0,0,.15); max-width:calc(100% - 32px);
+  /* ---- question card (no-detail links) — overlays its container ---- */
+  .ask-dim {
+    position:absolute; inset:0; z-index:10; border-radius:inherit;
+    background:rgba(0,0,0,.35);
+    display:none; align-items:flex-start; justify-content:center;
+    padding:clamp(24px,6vh,72px) 16px;
   }
-  .blank-skeleton {
-    position:relative; z-index:1;
-    padding:clamp(16px,4vw,40px) clamp(16px,6vw,64px) clamp(24px,4vw,48px);
-    display:flex; flex-direction:column; gap:16px;
-    filter:grayscale(1); opacity:.55; pointer-events:none;
-  }
-  .sk-card { height:clamp(80px,12vw,120px); background:#cfcfcf; border-radius:14px; }
-  .sk-bar  { height:clamp(28px,4vw,44px); background:#bdbdbd; border-radius:8px; }
-  .sk-line { height:16px; background:#d8d8d8; border-radius:6px; }
-  .sk-line.w90 { width:90%; } .sk-line.w70 { width:70%; } .sk-line.w50 { width:50%; }
-  .sk-rows { display:flex; flex-direction:column; gap:10px; margin-top:6px; }
-
-  /* ask-overlay (question card on top of blank mock) */
-  .ask-overlay {
-    position:absolute; inset:0; z-index:5;
-    background:rgba(255,255,255,.55); -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px);
-    display:flex; align-items:center; justify-content:center; padding:24px;
-  }
-  .ask-overlay[hidden] { display:none; }
+  .ask-dim.open { display:flex; }
   .ask-card {
     position:relative; background:#fff; border-radius:24px;
     box-shadow:0 24px 60px rgba(0,0,0,.25);
@@ -490,6 +514,15 @@
       <!-- CTA -->
       <button class="cta" id="cta">ดูอัปเดตใหม่ทั้งหมด <img src="assets/arrow_forward.svg" alt="" /></button>
 
+      <!-- question card (no-detail link) -->
+      <div class="ask-dim">
+        <div class="ask-card">
+          <button class="ask-close" aria-label="ปิด"><img src="assets/close.svg" alt="close" /></button>
+          <div class="ask-icon">?</div>
+          <div class="ask-text"><span class="blue">ทีมงานอยากทราบ</span><br />คุณคาดหวังอะไร<br />จากการกดปุ่มนี้?</div>
+        </div>
+      </div>
+
     </div>
 
     <!-- expand modal -->
@@ -588,6 +621,15 @@
           </div></div>
         </div>
 
+        <!-- question card (no-detail link) -->
+        <div class="ask-dim">
+          <div class="ask-card">
+            <button class="ask-close" aria-label="ปิด"><img src="assets/close.svg" alt="close" /></button>
+            <div class="ask-icon">?</div>
+            <div class="ask-text"><span class="blue">ทีมงานอยากทราบ</span><br />คุณคาดหวังอะไร<br />จากการกดปุ่มนี้?</div>
+          </div>
+        </div>
+
       </div>
     </div>
     <!-- detail modal (article view) -->
@@ -620,10 +662,13 @@
 
             <!-- main tabs -->
             <div class="tabs">
-              <div class="tab active"><span class="ic">📡</span>ข้อมูลสรุป</div>
-              <div class="tab"><span class="ic">🖼️</span>ข้อมูลรูปภาพ</div>
-              <div class="tab"><span class="ic">🗄️</span>ไฟล์เอกสารทั้งหมด</div>
+              <div class="tab active" data-tab="summary"><span class="ic">📡</span>ข้อมูลสรุป</div>
+              <div class="tab" data-tab="images"><span class="ic">🖼️</span>ข้อมูลรูปภาพ</div>
+              <div class="tab" data-tab="files"><span class="ic">🗄️</span>ไฟล์เอกสารทั้งหมด</div>
             </div>
+
+            <!-- panel: summary -->
+            <div class="tab-panel" data-panel="summary">
 
             <!-- สรุปข่าว -->
             <div class="sec">
@@ -631,7 +676,7 @@
               <div class="change-row">
                 <ol>
                   <li>ระเบียบ: หมวด Service หมวดย่อย Deposit เรื่อง บัญชีเงินฝาก ลูกค้าบุคคลธรรมดา สกุลเงินบาท</li>
-                  <li>ยกเลิกระเบียบเดิม: IRP. 796/2566 เปลี่ยนเป็น <a href="#">IRP. 1135/2567</a></li>
+                  <li>ยกเลิกระเบียบเดิม: IRP. 796/2566 เปลี่ยนเป็น <a href="https://ibmdt.sharepoint.com/sites/Guest_ENT-CYNX/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2F%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%2F%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%94%E0%B8%B2%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A%20%E0%B9%80%E0%B8%87%E0%B8%B4%E0%B8%99%E0%B8%9D%E0%B8%B2%E0%B8%81%2Epdf&parent=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2F%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%2F%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%94%E0%B8%B2%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A&p=true&ga=1" target="_blank" rel="noopener">IRP. 1135/2567</a></li>
                 </ol>
               </div>
             </div>
@@ -651,22 +696,22 @@
                 <div class="grp-head">หน่วยงานที่รับลูกค้า (หน้าเคาน์เตอร์/บริการ)</div>
                 <div class="crow">
                   <div class="c-desc"><b>ตรวจสอบสถานะ: </b>พิสูจน์ทราบตัวตนลูกค้าว่าเป็นบุคคลอเมริกันหรือไม่ (ตามเกณฑ์ FATCA/CRS)</div>
-                  <div class="c-link"><a href="#">ระเบียบ</a></div>
+                  <div class="c-link"><a href="https://ibmdt.sharepoint.com/sites/Guest_ENT-CYNX/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2F%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%2F%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%94%E0%B8%B2%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A%20%E0%B9%80%E0%B8%87%E0%B8%B4%E0%B8%99%E0%B8%9D%E0%B8%B2%E0%B8%81%2Epdf&parent=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2F%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%2F%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%94%E0%B8%B2%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A&p=true&ga=1" target="_blank" rel="noopener">ระเบียบ</a></div>
                   <div class="c-ref">(หน้า 8) 4.2.5 การปฏิบัติตามกฎเกณฑ์ FATCA/CRS</div>
                 </div>
                 <div class="crow">
                   <div class="c-desc"><b>ประเมินความเสี่ยง: </b>ระบุและพิสูจน์ตัวตนลูกค้าตามระดับความเสี่ยงของผลิตภัณฑ์/บริการที่ใช้</div>
-                  <div class="c-link"><a href="#">ระเบียบ</a></div>
+                  <div class="c-link"><a href="https://ibmdt.sharepoint.com/sites/Guest_ENT-CYNX/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2F%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%2F%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%94%E0%B8%B2%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A%20%E0%B9%80%E0%B8%87%E0%B8%B4%E0%B8%99%E0%B8%9D%E0%B8%B2%E0%B8%81%2Epdf&parent=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2F%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%2F%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%94%E0%B8%B2%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A&p=true&ga=1" target="_blank" rel="noopener">ระเบียบ</a></div>
                   <div class="c-ref">(หน้า 8) 4.2.7การระบุและพิสูจน์ทราบตัวตนตามระดับความเสี่ยงผลิตภัณฑ์</div>
                 </div>
                 <div class="crow">
                   <div class="c-desc"><b>เก็บหลักฐาน: </b>เก็บตัวอย่างลายมือชื่อ หรือภาพถ่ายผู้เปิดบัญชี โดยจัดเก็บเรียงตามวันที่เปิดบัญชีแยกต่างหากไว้ในตู้เก็บเอกสาร</div>
-                  <div class="c-link"><a href="#">ระเบียบ</a></div>
+                  <div class="c-link"><a href="https://ibmdt.sharepoint.com/sites/Guest_ENT-CYNX/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2F%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%2F%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%94%E0%B8%B2%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A%20%E0%B9%80%E0%B8%87%E0%B8%B4%E0%B8%99%E0%B8%9D%E0%B8%B2%E0%B8%81%2Epdf&parent=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2F%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%2F%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%94%E0%B8%B2%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A&p=true&ga=1" target="_blank" rel="noopener">ระเบียบ</a></div>
                   <div class="c-ref">(หน้า 9) 4.2.10 การเก็บตัวอย่างลายมือชื่อของลูกค้า</div>
                 </div>
                 <div class="crow">
                   <div class="c-desc"><b>อำนวยความสะดวกธุรกรรม: </b>ทำรายการผ่านระบบคอมพิวเตอร์และพิมพ์ใบฝาก/ถอนให้ โดยลูกค้าไม่ต้องกรอกเอง เพียงแจ้งความประสงค์และจำนวนเงิน</div>
-                  <div class="c-link"><a href="#">ระเบียบ</a></div>
+                  <div class="c-link"><a href="https://ibmdt.sharepoint.com/sites/Guest_ENT-CYNX/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2F%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%2F%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%94%E0%B8%B2%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A%20%E0%B9%80%E0%B8%87%E0%B8%B4%E0%B8%99%E0%B8%9D%E0%B8%B2%E0%B8%81%2Epdf&parent=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2F%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%2F%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%94%E0%B8%B2%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A&p=true&ga=1" target="_blank" rel="noopener">ระเบียบ</a></div>
                   <div class="c-ref">(หน้า 16) 7. บริการรับฝาก-ถอนเงินสดโดยลูกค้าไม่ต้องกรอกใบรับฝากเงิน-ใบถอนเงิน</div>
                 </div>
               </div>
@@ -676,7 +721,7 @@
                 <div class="grp-head">สาขาเจ้าของบัญชี</div>
                 <div class="crow">
                   <div class="c-desc"><b>ทบทวนข้อมูล: </b>ตรวจสอบและอัปเดตรายงาน KYC/CDDในระบบเพื่อทบทวนข้อมูลหลักฐานแสดงตนของลูกค้า อย่างต่อเนื่อง</div>
-                  <div class="c-link"><a href="#">ระเบียบ</a></div>
+                  <div class="c-link"><a href="https://ibmdt.sharepoint.com/sites/Guest_ENT-CYNX/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2F%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%2F%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%94%E0%B8%B2%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A%20%E0%B9%80%E0%B8%87%E0%B8%B4%E0%B8%99%E0%B8%9D%E0%B8%B2%E0%B8%81%2Epdf&parent=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2F%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%2F%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%94%E0%B8%B2%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A&p=true&ga=1" target="_blank" rel="noopener">ระเบียบ</a></div>
                   <div class="c-ref">(หน้า 10) 4.2.12 การติดตาม ทบทวน/ปรับปรุงข้อมูลหรือหลักฐานการแสดงตน (KYC) และข้อมูลตรวจสอบเพื่อทราบข้อเท็จจริงเกี่ยวกับลูกค้า (CDD) อย่างต่อเนื่อง</div>
                 </div>
                 <div class="crow">
@@ -687,7 +732,7 @@
                       <li>วิธีการพิจารณาปัจจัยที่อาจจะทำให้ลูกค้ามีความเสี่ยงสูง</li>
                     </ul>
                   </div>
-                  <div class="c-link"><a href="#">คู่มือ</a></div>
+                  <div class="c-link"><a href="https://ibmdt.sharepoint.com/sites/Guest_ENT-CYNX/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2F%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%2F%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%94%E0%B8%B2%2F%E0%B8%84%E0%B8%B9%E0%B9%88%E0%B8%A1%E0%B8%B7%E0%B8%AD%20%28%E0%B8%96%E0%B9%89%E0%B8%B2%E0%B8%A1%E0%B8%B5%29%2F%E0%B8%84%E0%B8%B9%E0%B9%88%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B9%80%E0%B8%87%E0%B8%B4%E0%B8%99%E0%B8%9D%E0%B8%B2%E0%B8%81%E0%B8%A5%E0%B8%B9%E0%B8%81%E0%B8%84%E0%B9%89%E0%B8%B2%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%94%E0%B8%B2%2Epdf&parent=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2F%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%2F%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%94%E0%B8%B2%2F%E0%B8%84%E0%B8%B9%E0%B9%88%E0%B8%A1%E0%B8%B7%E0%B8%AD%20%28%E0%B8%96%E0%B9%89%E0%B8%B2%E0%B8%A1%E0%B8%B5%29&p=true&ga=1" target="_blank" rel="noopener">คู่มือ</a></div>
                   <div class="c-ref">
                     <ul>
                       <li>(หน้า 33) 1.4 การตรวจสอบเพื่อทราบข้อเท็จจริง และการประเมินความเสี่ยงของลูกค้า</li>
@@ -703,7 +748,7 @@
                 <div class="grp-head">ทีมสนับสนุนงานสาขา (Back Office)</div>
                 <div class="crow">
                   <div class="c-desc"><b>แจ้งผลและส่งเอกสาร: </b>เมื่อเปิดบัญชีแล้ว ต้องทำทะเบียนแจ้งผล (สำเร็จ/ไม่สำเร็จ) กลับไปยังสาขา พร้อมจัดพิมพ์และส่งคืนใบคำขอเปิดบัญชีให้สาขา</div>
-                  <div class="c-link"><a href="#">ระเบียบ</a></div>
+                  <div class="c-link"><a href="https://ibmdt.sharepoint.com/sites/Guest_ENT-CYNX/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2F%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%2F%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%94%E0%B8%B2%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A%20%E0%B9%80%E0%B8%87%E0%B8%B4%E0%B8%99%E0%B8%9D%E0%B8%B2%E0%B8%81%2Epdf&parent=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2F%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%2F%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%94%E0%B8%B2%2F%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%9A&p=true&ga=1" target="_blank" rel="noopener">ระเบียบ</a></div>
                   <div class="c-ref">(หน้า 11) 4.4, ข้อย่อย 4.4.3 การเปิดบัญชีเงินฝากออมทรัพย์ลูกค้าบุคคลธรรมดาจำนวนมาก โดยหน่วยงานสำนักงานใหญ่ (Open Account by Batch) สำหรับบุคคลธรรมดา ที่มีอายุตั้งแต่ 15 ปีบริบูรณ์ขึ้นไป และมีสัญชาติไทย เท่านั้น</div>
                 </div>
               </div>
@@ -730,6 +775,47 @@
               </div>
             </div>
 
+            </div><!-- /panel: summary -->
+
+            <!-- panel: images (slider) -->
+            <div class="tab-panel" data-panel="images" hidden>
+              <div class="slider">
+                <div class="slide-main"><img id="slideImg" src="assets/case1/case1-1.png" alt="รูปภาพ 1" /></div>
+                <div class="slide-nav">
+                  <button class="snav" id="slidePrev" aria-label="ก่อนหน้า">‹</button>
+                  <div class="thumbs">
+                    <div class="thumb active" data-i="0" style="background-image:url('assets/case1/case1-1.png')"></div>
+                    <div class="thumb" data-i="1" style="background-image:url('assets/case1/case1-2.png')"></div>
+                    <div class="thumb" data-i="2" style="background-image:url('assets/case1/case1-3.png')"></div>
+                    <div class="thumb" data-i="3" style="background-image:url('assets/case1/case1-4.png')"></div>
+                  </div>
+                  <button class="snav" id="slideNext" aria-label="ถัดไป">›</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- panel: files -->
+            <div class="tab-panel" data-panel="files" hidden>
+              <div class="files">
+                <div class="files-head">
+                  <span class="fh-title">ลิงก์ทั้งหมด</span>
+                  <a class="dl-all" href="https://ibmdt.sharepoint.com/sites/Guest_ENT-CYNX/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGuest%5FENT%2DCYNX%2FShared%20Documents%2FKTBxIBMDT%20CYNX%2FDocument%20for%20Prototype%20Development%2F%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B5&viewid=fa3a5b69%2D044a%2D4fbf%2Dbaf0%2D20fec934e5a0" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    ดาวน์โหลดทั้งหมด
+                  </a>
+                </div>
+                <div class="files-body">
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQAnsVLmn31WRoYRe7pLfyatAeYr4IwMSQYnedgfRajtzXk?e=hpzaWw" target="_blank" rel="noopener">Link</a><span>เรื่องเด่นเรื่องเด็ด-การเปิดบัญชีสำหรับชาวต่างชาติ กรณีวีซ่าประเภท ติดตามคู่สมรส</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQBrmJFqRVPlR5TAatnC8sZiAUDHlCJkGfjgqH_sauHBGw8?e=ZfFHLr" target="_blank" rel="noopener">Link</a><span>เรื่องเด่นเรื่องเด็ด-ข้อควรระวัง ในการเปิดบัญชีบนระบบ WebCSR ผ่านเมนู</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQBbWo__OMSOTIB9K7fjy9z0AfBQSIJjdisWITRUg_FJWes?e=WgFWjq" target="_blank" rel="noopener">Link</a><span>เรื่องเด่นเรื่องเด็ด-เมื่อเปิดบัญชีชาวต่างชาติบุคคลธรรมดา ผ่าน e-Solutions</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:i:/s/Guest_ENT-CYNX/IQCkk9TiJ-yOTalrDjp84y_qARBUFbPTRZnGHw9yPJiXBZg?e=3sLoYs" target="_blank" rel="noopener">Link</a><span>เรื่องเด่นเรื่องเด็ด-ระบบงาน e-Solutions พร้อมรองรับการทำ EDD ลูกค้าที่เปิดบัญชีเงินฝากและมี KYC-CDD Status 3</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQDpT7goff9KSrFrCF5foS8LAU12ihJ41zxxRh_xMSW0Bw0?e=NIXooV" target="_blank" rel="noopener">Link</a><span>นว คู่มือเงินฝากบุคคล</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQCgo9gdDLUHRL4LjcDVIq5TAe1_kJAU3mGz0Hsz2mev7ME?e=aj5rLa" target="_blank" rel="noopener">Link</a><span>ระเบียบ เงินฝาก IRP. 1135/2567</span></div>
+                  <div class="file-row"><a href="https://ibmdt.sharepoint.com/:b:/s/Guest_ENT-CYNX/IQBPz9zI8-YFQpFRGqIjcUNCAbF0AeorttB4TZOauoVvsf4?e=ZP3SBL" target="_blank" rel="noopener">Link</a><span>คู่มือเงินฝากลูกค้าบุคคลธรรมดา</span></div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -748,56 +834,6 @@
           </div>
         </div>
 
-      </div>
-    </div>
-
-    <!-- blank / mock detail modal -->
-    <div class="detail" id="detailBlank" role="dialog" aria-label="เนื้อหาตัวอย่าง">
-      <div class="detail-card">
-
-        <!-- question card on top -->
-        <div class="ask-overlay" id="askOverlay">
-          <div class="ask-card">
-            <button class="ask-close" id="askClose" aria-label="ปิด"><img src="assets/close.svg" alt="close" /></button>
-            <div class="ask-icon">?</div>
-            <div class="ask-text"><span class="blue">ทีมงานอยากทราบ</span><br />คุณคาดหวังอะไร<br />จากการกดปุ่มนี้?</div>
-          </div>
-        </div>
-
-        <div class="detail-body blank-body">
-          <div class="detail-head">
-            <div class="title">Morning Spark!</div>
-            <button class="modal-close" id="blankClose" aria-label="ปิด"><img src="assets/close.svg" alt="close" /></button>
-          </div>
-          <div class="blank-notice">เนื้อหาตัวอย่างเท่านั้น — Mock content only</div>
-          <div class="blank-skeleton">
-            <div class="sk-card"></div>
-            <div class="sk-bar"></div>
-            <div class="sk-rows">
-              <div class="sk-line w90"></div>
-              <div class="sk-line w70"></div>
-              <div class="sk-line w50"></div>
-            </div>
-            <div class="sk-bar"></div>
-            <div class="sk-rows">
-              <div class="sk-line w90"></div>
-              <div class="sk-line w70"></div>
-            </div>
-          </div>
-        </div>
-        <div class="detail-footer">
-          <button class="fbtn back" id="blankBack">ย้อนกลับ</button>
-          <div class="fr">
-            <button class="fbtn share">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 8a3 3 0 100-6 3 3 0 000 6zM6 15a3 3 0 100-6 3 3 0 000 6zM18 22a3 3 0 100-6 3 3 0 000 6zM8.6 13.5l6.8 4M15.4 6.5l-6.8 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              แชร์เพื่อบอกต่อ
-            </button>
-            <button class="fbtn read">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              ทำเครื่องหมายว่าอ่านแล้ว
-            </button>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -844,30 +880,27 @@
     const detail = document.getElementById('detail');
     const detailClose = document.getElementById('detailClose');
     const detailBack = document.getElementById('detailBack');
-    const detailBlank = document.getElementById('detailBlank');
-    const blankClose = document.getElementById('blankClose');
-    const blankBack = document.getElementById('blankBack');
-    const askOverlay = document.getElementById('askOverlay');
-    const askClose = document.getElementById('askClose');
+
+    // reset first item back to unread (read state is per-open only)
+    const resetRead = () => { const rs = document.querySelector('#modal .feed-item .read-status'); if (rs) rs.innerHTML = '<span class="dot unread"></span>ยังไม่อ่าน'; };
 
     const open  = () => { popup.classList.add('open'); overlay.classList.add('open'); };
-    const close = () => { popup.classList.remove('open'); overlay.classList.remove('open'); };
+    const close = () => { popup.classList.remove('open'); overlay.classList.remove('open'); resetRead(); };
 
     // CTA: close small popup, open expand modal (overlay stays dim)
     const openModal  = () => { popup.classList.remove('open'); modal.classList.add('open'); overlay.classList.add('open'); };
-    const closeModal = () => { modal.classList.remove('open'); overlay.classList.remove('open'); };
+    const closeModal = () => { modal.classList.remove('open'); overlay.classList.remove('open'); resetRead(); };
 
     // open real article detail (first article only) — closes popup + expand
     const openDetail  = () => { popup.classList.remove('open'); modal.classList.remove('open'); detail.classList.add('open'); overlay.classList.add('open'); };
-    const closeDetail = () => { detail.classList.remove('open'); overlay.classList.remove('open'); };
-    // open blank/mock detail (every other article) — closes popup + expand
-    const openBlank  = () => { popup.classList.remove('open'); modal.classList.remove('open'); detailBlank.classList.add('open'); overlay.classList.add('open'); askOverlay.hidden = false; };
-    const closeBlank = () => { detailBlank.classList.remove('open'); overlay.classList.remove('open'); };
+    const closeDetail = () => { detail.classList.remove('open'); overlay.classList.remove('open'); resetRead(); };
+    // no-detail link -> show question card INSIDE its container (popup/modal), keep it open
+    const showAsk = (el) => { const c = el.closest('.popup, .modal-card'); if (!c) return; c.scrollTop = 0; c.querySelector('.ask-dim').classList.add('open'); };
+    const hideAllAsk = () => document.querySelectorAll('.ask-dim.open').forEach(d => d.classList.remove('open'));
     // back -> return to expand modal
-    const backToModal      = () => { detail.classList.remove('open'); modal.classList.add('open'); overlay.classList.add('open'); };
-    const backToModalBlank = () => { detailBlank.classList.remove('open'); modal.classList.add('open'); overlay.classList.add('open'); };
+    const backToModal = () => { detail.classList.remove('open'); modal.classList.add('open'); overlay.classList.add('open'); };
 
-    const closeAll = () => { close(); closeModal(); closeDetail(); closeBlank(); };
+    const closeAll = () => { hideAllAsk(); close(); closeModal(); closeDetail(); };
 
     noti.addEventListener('click', open);
     noti.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
@@ -876,14 +909,47 @@
     modalClose.addEventListener('click', closeModal);
     detailClose.addEventListener('click', closeDetail);
     detailBack.addEventListener('click', backToModal);
-    blankClose.addEventListener('click', closeBlank);
-    blankBack.addEventListener('click', backToModalBlank);
-    askClose.addEventListener('click', () => { askOverlay.hidden = true; });
-    // first article -> real detail; every other -> blank mock
-    document.querySelectorAll('#modal .feed-item').forEach((el, i) => el.addEventListener('click', i === 0 ? openDetail : openBlank));
-    document.querySelectorAll('#popup .item').forEach((el, i) => el.addEventListener('click', i === 0 ? openDetail : openBlank));
+    // ask-card close -> hide only that card, container stays open
+    document.querySelectorAll('.ask-close').forEach(b => b.addEventListener('click', () => b.closest('.ask-dim').classList.remove('open')));
+    // first article -> real detail; every other -> question card in place
+    document.querySelectorAll('#modal .feed-item').forEach((el, i) => el.addEventListener('click', i === 0 ? openDetail : () => showAsk(el)));
+    document.querySelectorAll('#popup .item').forEach((el, i) => el.addEventListener('click', i === 0 ? openDetail : () => showAsk(el)));
     overlay.addEventListener('click', closeAll);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
+
+    // detail tabs (summary / images / files)
+    const detailTabs = document.querySelectorAll('#detail .tab');
+    const detailPanels = document.querySelectorAll('#detail .tab-panel');
+    detailTabs.forEach(t => t.addEventListener('click', () => {
+      detailTabs.forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      detailPanels.forEach(p => { p.hidden = p.dataset.panel !== t.dataset.tab; });
+    }));
+
+    // image slider (case1/case1-N.png)
+    const slides = ['assets/case1/case1-1.png', 'assets/case1/case1-2.png', 'assets/case1/case1-3.png', 'assets/case1/case1-4.png'];
+    const slideImg = document.getElementById('slideImg');
+    const thumbs = document.querySelectorAll('#detail .thumb');
+    let slideIdx = 0;
+    const showSlide = (i) => {
+      slideIdx = (i + slides.length) % slides.length;
+      slideImg.src = slides[slideIdx];
+      slideImg.alt = 'รูปภาพ ' + (slideIdx + 1);
+      thumbs.forEach((th, k) => th.classList.toggle('active', k === slideIdx));
+    };
+    document.getElementById('slidePrev').addEventListener('click', () => showSlide(slideIdx - 1));
+    document.getElementById('slideNext').addEventListener('click', () => showSlide(slideIdx + 1));
+    thumbs.forEach((th, k) => th.addEventListener('click', () => showSlide(k)));
+
+    // mark-as-read (mock) -> close detail, open expand list with first item read
+    const markReadBtn = document.querySelector('#detail .fbtn.read');
+    markReadBtn.addEventListener('click', () => {
+      const rs = document.querySelector('#modal .feed-item .read-status');
+      if (rs) rs.innerHTML = '<span class="dot read"></span>อ่านแล้ว';
+      detail.classList.remove('open');
+      modal.classList.add('open');
+      overlay.classList.add('open');
+    });
   </script>
 </body>
 </html>
